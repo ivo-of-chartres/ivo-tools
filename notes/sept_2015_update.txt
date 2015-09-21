@@ -1,0 +1,29 @@
+# Unpacking, copying from the dropbox download
+cd Documents/
+mkdir ivo
+cd ivo/
+unzip /Users/mb312/Downloads/revised\ ivo\ pdfs.zip
+mv revised\ ivo\ pdfs/* .
+rmdir revised\ ivo\ pdfs/
+open homepage.pdf
+open revised\ Front\ page\ for\ Tripartita.pdf
+open Decretum\ PDF/Revised\ Front\ page\ for\ Decretum.pdf
+open letters\ PDF/Letters\ frontpage.pdf
+
+# Editing the website repository, meanwhile
+cd ivo-of-chartres.github.com/
+ivo-rename.py ~/Documents/ivo
+git stat
+mv tripartita/tripb_cont.pdf tripartita/trip_b_cont.pdf
+mv tripartita/tripa.1.pdf tripartita/trip_a_1.pdf
+gvr index.html
+open index.html
+cd letters/
+cp ~/Documents/ivo/letters\ PDF/7\ -\ Appendix\ * .
+cp ~/Documents/ivo/letters\ PDF/Manuscripts.pdf webmanuscripts.pdf
+mv 7\ -\ Appendix\ B.pdf letters_appendix_b.pdf
+mv 7\ -\ Appendix\ C\ -\ tables.pdf letters_appendix_c_tables.pdf
+open letters.html
+open panormia.html
+git add letters/*.pdf
+git commit -a
