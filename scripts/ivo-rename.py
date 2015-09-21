@@ -3,7 +3,7 @@
 from __future__ import print_function
 
 import os
-from os.path import join as pjoin, isdir
+from os.path import join as pjoin, isdir, expanduser
 import shutil
 import argparse
 
@@ -22,8 +22,8 @@ def main():
                         default=os.getcwd(),
                         help='output directory (default is current directory)')
     args = parser.parse_args()
-    in_dir = args.in_dir
-    out_dir = args.out_dir
+    in_dir = expanduser(args.in_dir)
+    out_dir = expanduser(args.out_dir)
     for dirpath, dirnames, filenames in os.walk(in_dir):
         for fbase in filenames:
             full_path = pjoin(dirpath, fbase)
